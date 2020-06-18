@@ -80,11 +80,6 @@ class LinkedList {
         previousNode.next = currNode.next;
     }
 
-//insertBefore - needs to find the node with the key
-//insert a node before that 
-//looking for currNode.next that has key
-//then previous node.next equals item/currNode
-//and currNode.next = currNode.next
     insertBefore(item, key) {
         if(!this.head) {
             this.insertFirst(item)
@@ -118,6 +113,10 @@ class LinkedList {
         keyNode.next = new _Node(item, currNode.next)
     }
 
+    insertAt(item, index) {
+
+    }
+
 }
 
 
@@ -129,17 +128,78 @@ const main = function() {
     SLL.insertLast('Helo');
     SLL.insertLast('Husker');
     SLL.insertLast('Starbuck');
-    console.log(SLL)
+
     SLL.insertLast('Tauhida');
     SLL.remove('Husker');
     
-
-
-    SLL.insertBefore('Athena', 'Boomer')
-    console.log(SLL);
+    SLL.insertBefore('Athena', 'Boomer');
     SLL.insertAfter('Hotdog', 'Apollo');
-    console.log(SLL)
+   
+    SLL.remove('Tauhida');
+    return SLL;
 }
 
-main();
 
+function display(list) {
+ //recursion? for each next (as long as not null) push value into array?
+  if(!list.head) {
+      return null;
+  }
+  let array = [];
+  let currNode = list.head;
+  while(currNode !== null) {
+      array.push(currNode.value)
+      currNode = currNode.next;
+  }
+  console.log(array)
+}
+
+function size(list) {
+    let counter = 0;
+    if(!list.head) {
+        return counter;
+    }
+    
+    let currNode = list.head;
+    while(currNode !== null) {
+        counter++;
+        currNode = currNode.next;
+    }
+    console.log(counter)
+}
+
+function isEmpty(list) {
+    if(!list.head) {
+       return true;
+    } else {
+    return false;
+    }
+}
+
+
+function findPrevious(list, key) {
+    let currNode = list.head;
+    let previousNode = list.head;
+  
+    while((currNode.value !== key) && (currNode.next !== null)) {
+        previousNode = currNode;
+        currNode = currNode.next;
+    }
+    
+    console.log(currNode)
+
+}
+
+function findLast(list) {
+    let currNode = list.head;
+    while(currNode.next !== null) {
+        currNode = currNode.next
+    }
+    console.log(currNode)
+}
+
+isEmpty(main());
+display(main());
+size(main());
+findPrevious(main(), 'Boomer');
+findLast(main());
