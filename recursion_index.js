@@ -23,7 +23,6 @@ const iterativeSheep = function(num) {
 }
 
 
-
 const powerCalculator = function(base, exponent) {
     if (exponent <= 0) {
         return `exponent should be >= 0`
