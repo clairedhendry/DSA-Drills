@@ -203,3 +203,60 @@ display(main());
 size(main());
 findPrevious(main(), 'Boomer');
 findLast(main());
+
+//checking if the list has repeats?
+//comparing each node against the first node, then each value against the 2nd, and so on
+// 0(n^k)? or exponential
+function WhatDoesThisProgramDo(lst) {
+    //current is first node (head)
+    let current = lst.head;
+    //as long as there is a node, not null
+    //going to cycle through each node
+    while (current !== null) {
+        //create newNode at current node
+        let newNode = current;
+        //while newNode is not the last in the list
+        while (newNode.next !== null) {
+            //if the value of the node next to newNode equals the value of the current node
+            if (newNode.next.value === current.value) {
+                //the node next to newNode becomes the one next to it
+                newNode.next = newNode.next.next;
+            }
+            else {
+                //else move along 
+                newNode = newNode.next;
+            }
+        }
+        //then move along the list
+        current = current.next;
+    }
+}
+
+function reverseList(list) {
+    //tail becomes head and next points to previous node
+    //walk along list, each currNode's next points back to previous node
+    //can be solved with recursion
+}
+
+function thirdFromEnd(list) {
+    //find the node where .next.next.next === null
+}
+
+function middleOfList(list) {
+    //find the node where number of previous nodes === number of next nodes
+    //can not just get size and divide by 2
+    //
+}
+
+function cycleList(list) {
+    //check if .next of currNode === any previous node 
+    //probably very similar to whatDoesThisProgramDo - need to compare each node against each other
+
+}
+
+function sortingAList(list) {
+    //maybe similar to above, where need to check each value against all others?
+    //or maybe, slightly better way
+    //compare consecutive values, if a is lower, compare to minValue, if lower, becomes minValue
+    //but need to make sure pointer is set correct
+}
