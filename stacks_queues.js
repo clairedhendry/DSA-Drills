@@ -68,30 +68,6 @@ class Queue {
 }
 
 
-// class Stack {
-//     constructor() {
-//         this.top = null;
-//     }
-
-//     push(data) {
-//         if(this.top === null) {
-//             this.top = new _Node(data, null);
-//             return this.top;
-//         }
-//         const node = new _Node(data, this.top);
-//         this.top = node;
-//     }
-
-//     pop() {
-//         if(this.top === null) {
-//             return;
-//         }
-//         const node = this.top;
-//         this.top = node.next;
-//         return node.data;
-//     }
-// }
-
 const starTrek = new Stack();
 
 starTrek.push('Kirk');
@@ -114,21 +90,6 @@ function isEmpty(stack) {
         return false;
     }
 }
-
-// function display(stack) {
-//     if(stack.top === null) {
-//         return;
-//     }
-//     if(stack.top !== null) {
-//         const node = this.top;
-//         const nextNode = node.next;
-//         while(nextNode !== null) {
-//             node = nextNode;
-//             nextNode = nextNode.next
-//         }
-//         return node;
-//     }
-// }
 
 function display(stack) {
     let currNode = stack.top;
@@ -157,12 +118,91 @@ function is_palindrome(str) {
     return outcome;
 }
 
-console.log(isEmpty(starTrek));
+// console.log(isEmpty(starTrek));
 
-console.log(peek(starTrek));
+// console.log(peek(starTrek));
 
-console.log(display(starTrek));
+// console.log(display(starTrek));
 
-console.log(is_palindrome('dad'));
-console.log(is_palindrome("Tauhida"));
-console.log(is_palindrome("A man, a plan, a canal: Panama"));
+// console.log(is_palindrome('dad'));
+// console.log(is_palindrome("Tauhida"));
+// console.log(is_palindrome("A man, a plan, a canal: Panama"));
+
+
+function matchingParentheses(expression) {
+    //returns true if expression has correct matching parentheses
+    //need to travel through stack and every time meet open parentheses, add to count
+    //when meet closed, add to count
+    //if counts are equal, return true
+    //keep track of location of erroneously open or close parenthesis
+
+    let open = 0;
+    let closed = 0;
+
+    const stack = new Stack();
+    for(let i = 0; i < expression.length; i++) {
+        if(expression.charAt(i) === `)` || expression.charAt(i) === `(`) {
+          let character = escape(expression.charAt(i));
+          stack.push(character)
+    }
+}
+    while(stack.top.next !== null) {
+        if(stack.top.data = `%29`) {
+            closed++;
+        
+            stack.top = stack.top.next
+        } else
+        if(stack.top.data = `%28`) {
+            open++;
+            
+            stack.top = stack.top.next;
+        }
+    }
+    console.log(`number of closed are ${open}`);
+    console.log(`number of opens are ${closed}`);
+    if(open === closed) {
+        return true;
+    } else {
+        return false;
+    }
+    //not working correctly - only 
+}
+
+let expr = `(((((4 +2) + 1`
+
+console.log(matchingParentheses(expr));
+
+
+
+const starTrek_Queue = new Queue();
+
+starTrek_Queue.enqueue('Kirk');
+starTrek_Queue.enqueue('Spock');
+starTrek_Queue.enqueue('Uhura');
+starTrek_Queue.enqueue('Sulu');
+starTrek_Queue.enqueue('Checkov');
+
+function queue_peek(queue) {
+    if(!queue.first) {
+        return `nothing here!`
+    }
+    else {
+        return queue.first.value
+    }
+}
+
+console.log(queue_peek(starTrek_Queue));
+
+function isQEmpty(q) {
+    if(!q.first) {
+        return `empty!`
+    }
+    else {
+        return `not empty`
+    }
+}
+
+const emptyQ = new Queue();
+
+console.log(isQEmpty(starTrek_Queue));
+console.log(isQEmpty(emptyQ));
